@@ -1,0 +1,9 @@
+C:/Users/omarbayom/Desktop/Automata/project/traffic/build/Desktop_Qt_6_8_1_llvm_mingw_64_bit-Debug/CMakeFiles/traffic.dir
+C:/Users/omarbayom/Desktop/Automata/project/traffic/build/Desktop_Qt_6_8_1_llvm_mingw_64_bit-Debug/CMakeFiles/edit_cache.dir
+C:/Users/omarbayom/Desktop/Automata/project/traffic/build/Desktop_Qt_6_8_1_llvm_mingw_64_bit-Debug/CMakeFiles/rebuild_cache.dir
+C:/Users/omarbayom/Desktop/Automata/project/traffic/build/Desktop_Qt_6_8_1_llvm_mingw_64_bit-Debug/CMakeFiles/list_install_components.dir
+C:/Users/omarbayom/Desktop/Automata/project/traffic/build/Desktop_Qt_6_8_1_llvm_mingw_64_bit-Debug/CMakeFiles/install.dir
+C:/Users/omarbayom/Desktop/Automata/project/traffic/build/Desktop_Qt_6_8_1_llvm_mingw_64_bit-Debug/CMakeFiles/install/local.dir
+C:/Users/omarbayom/Desktop/Automata/project/traffic/build/Desktop_Qt_6_8_1_llvm_mingw_64_bit-Debug/CMakeFiles/install/strip.dir
+C:/Users/omarbayom/Desktop/Automata/project/traffic/build/Desktop_Qt_6_8_1_llvm_mingw_64_bit-Debug/CMakeFiles/traffic_autogen_timestamp_deps.dir
+C:/Users/omarbayom/Desktop/Automata/project/traffic/build/Desktop_Qt_6_8_1_llvm_mingw_64_bit-Debug/CMakeFiles/traffic_autogen.dir
