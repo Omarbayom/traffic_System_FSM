@@ -14,7 +14,8 @@ class SmartTrafficLight : public QObject, public QGraphicsRectItem {
     Q_OBJECT
 
 public:
-    explicit SmartTrafficLight(QGraphicsItem *parent = nullptr);
+    explicit SmartTrafficLight(QGraphicsItem *parent = nullptr, const QColor &initialColor = Qt::red, int duration = 15);
+
 
     void setTrafficDensity(int density);
     void triggerEmergency();
@@ -61,7 +62,6 @@ public:
 private slots:
     //void simulateEmergency(SmartTrafficLight* selectedLight);
     void simulatePedestrianCrossing(SmartTrafficLight* selectedLight);
-    void synchronizeTraffic();
 
 private:
     QGraphicsView *view;

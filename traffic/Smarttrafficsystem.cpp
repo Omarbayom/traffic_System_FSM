@@ -6,12 +6,15 @@
 #include <QGraphicsSceneMouseEvent>
 
 // SmartTrafficLight Implementation
-SmartTrafficLight::SmartTrafficLight(QGraphicsItem *parent)
-    : QGraphicsRectItem(parent), currentState(State::Red), stateDuration(10), elapsedTime(0), remainingTime(stateDuration),
+SmartTrafficLight::SmartTrafficLight(QGraphicsItem *parent, const QColor &initialColor, int duration)
+    : QGraphicsRectItem(parent), stateDuration(duration), elapsedTime(0), remainingTime(stateDuration),
     pedestrianButtonPressed(false) {
 
+    // Set initial state and color based on the color provided
     setRect(-10, -10, 20, 20); // Square traffic light
-    setColor(Qt::red);
+    setColor(initialColor);
+    currentState = (initialColor == Qt::green) ? State::Green :
+                       (initialColor == Qt::yellow) ? State::Yellow : State::Red;
 
     timer = new QTimer(this);
     stateChangeTimer = new QTimer(this);
@@ -30,9 +33,13 @@ SmartTrafficLight::SmartTrafficLight(QGraphicsItem *parent)
 }
 
 void SmartTrafficLight::setColor(const QColor &color) {
-    QBrush brush(color);
-    setBrush(brush);
+    setBrush(QBrush(color));
+    // Optionally, update current state based on the color
+    currentState = (color == Qt::green) ? State::Green :
+                       (color == Qt::yellow) ? State::Yellow : State::Red;
 }
+
+
 
 void SmartTrafficLight::updateLight() {
     elapsedTime++;
@@ -41,20 +48,20 @@ void SmartTrafficLight::updateLight() {
         elapsedTime = 0;
 
         switch (currentState) {
-        case State::Red:
+        case State::Green:
             currentState = State::Yellow;
             setColor(Qt::yellow);
-            stateDuration = 3; // Yellow light duration
+            stateDuration = 5; // Yellow light duration
             break;
-        case State::Yellow:
+        case State::Red:
             currentState = State::Green;
             setColor(Qt::green);
             stateDuration = 10; // Green light duration
             break;
-        case State::Green:
+        case State::Yellow:
             currentState = State::Red;
             setColor(Qt::red);
-            stateDuration = 10; // Red light duration
+            stateDuration =15 ; // Red light duration
             break;
         }
 
@@ -84,9 +91,6 @@ QString SmartTrafficLight::getLightState() const {
     return "Unknown";
 }
 
-void SmartTrafficLight::setTrafficDensity(int density) {
-    stateDuration = 10 + density; // Increase state duration based on traffic density
-}
 
 void SmartTrafficLight::triggerEmergency() {
     currentState = State::Green;
@@ -203,7 +207,13 @@ void SmartTrafficSystem::createRoadsAndLights() {
     // Place traffic lights in a 2x2 grid format
     for (int x = 200; x <= 400; x += 200) {
         for (int y = 200; y <= 400; y += 200) {
-            SmartTrafficLight *light = new SmartTrafficLight();
+            SmartTrafficLight *light;
+            if(x!=y){
+                 light= new SmartTrafficLight();
+            }
+            else{
+                light = new SmartTrafficLight(nullptr,Qt::green,10);
+            }
             light->setPos(x, y);
             scene->addItem(light);
             trafficLights.push_back(light);
@@ -222,6 +232,4 @@ void SmartTrafficSystem::simulatePedestrianCrossing(SmartTrafficLight* selectedL
     selectedLight->triggerPedestrianCrossing();
 }
 
-void SmartTrafficSystem::synchronizeTraffic() {
-    // Implement synchronization logic between traffic lights here
-}
+
